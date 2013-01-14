@@ -20,9 +20,13 @@ or download the package from github/pypi and run:
 
     python setup.py install
 
-Note that this is more of a tool for interactive sessions and probably not the
-right tool for many projects because installing is a big deal that
-shouldn't just happen on its own. But I find it useful.
+
+What about buildout or pip -r requirements.txt
+=============
+Those are better solutions - use them! This is more of a toy for interactive
+sessions and probably not the right tool for many projects because installing
+is a big deal that shouldn't just happen on its own. Though it is useful on
+some occasions.
 
 
 Tested on Ubuntu and Windows with python 2.7 and 3.3
