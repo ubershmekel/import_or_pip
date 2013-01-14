@@ -12,6 +12,14 @@ E.g.
 
 And import_or_pip will just import if jinja2 is installed.download your dependancy if it isn't already installed.
 
+To install import_or_pip run:
+
+    pip install import_or_pip
+
+or download the package from github/pypi and run:
+
+    python setup.py install
+
 Note that this is more of a tool for interactive sessions and probably not the
 right tool for many projects because installing is a big deal that
 shouldn't just happen on its own. But I find it useful.
