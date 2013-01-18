@@ -11,15 +11,24 @@ But I'm feeling lazy.
 
 import platform
 import subprocess
+import re
+
+version = '0.2'
+if platform.system().lower() == 'linux':
+    pip_exe = 'sudo pip'
+else:
+    pip_exe = 'pip'
+
 
 def pip_install(name):
-    if platform.system().lower() == 'linux':
-        line = 'sudo pip install %s' % name
-    else:
-        line = 'pip install %s' % name
-
+    line = pip_exe + ' install %s' % name
     subprocess.check_call(line, shell=True)
 
+def remove_pip_versioning(name):
+    """
+    to allow importing e.g. "arff==0.7" ==> "arff"
+    """
+    return re.sub(r'([=><].*)', '', name)
 
 def import_or_pip(name, **kwargs):
     try:
@@ -30,5 +39,8 @@ def import_or_pip(name, **kwargs):
         name = kwargs['pip_name']
 
     pip_install(name)
-    
-    return __import__(name)
+    clean_name = remove_pip_versioning(name)
+    # TODO: check for the correct version with pkg_resources and avoid
+    # pip_install subprocess if we already have it.
+    return __import__(clean_name)
+

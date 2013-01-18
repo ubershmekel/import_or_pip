@@ -14,7 +14,7 @@ DOCUMENTATION = import_or_pip.__doc__
 
 
 setup(name='import_or_pip',
-      version='0.1.2',
+      version=import_or_pip.version,
       description="import a module or pip install it if it isn't found",
       long_description=DOCUMENTATION,
       keywords=['import', 'pip', 'download'],
